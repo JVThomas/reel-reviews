@@ -1,0 +1,13 @@
+<h1>Welcome, <%=@user.username%>! Here are your reviews!</h1>
+<br>
+<%@reviews.each_with_index do |review,index|%>
+  <p><%=review.content%></p>
+  <form method = "get" action = "/reviews/<%=review.id%>/edit">
+    <input type = "submit" value="Edit">
+  </form>
+  <form method = "post" action = "/reviews/<%=review.id%>/delete">
+    <input type = "submit" value="Delete">
+  </form>
+  <br>
+<%end%>
+<a href="/reviews/new">Create a new Review</a><a href="/logout">Logout</a>

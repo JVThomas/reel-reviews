@@ -49,6 +49,11 @@ class UserController < ApplicationController
     redirect to '/'
   end
 
+  get '/users' do
+    @users = User.all
+    erb :"users/index"
+  end
+
   get '/users/:slug' do
     redirect to "/login" if !logged_in? 
     @user = User.find_by_slug(params[:slug])
@@ -61,6 +66,6 @@ class UserController < ApplicationController
     redirect to "/login" if !logged_in? 
     @user = User.find(session[:id])
     @reviews = @user.reviews
-    erb :"users/index"
+    erb :"users/home"
   end
 end
