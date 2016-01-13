@@ -2,12 +2,12 @@
 <br>
 <%@reviews.each_with_index do |review,index|%>
   <p><%=review.content%></p>
-  <form method = "get" action = "/<%=@user.username%>/reviews/<%=index+1%>/edit">
+  <form method = "get" action = "/reviews/<%=review.id%>/edit">
     <input type = "submit" value="Edit">
   </form>
-  <form method = "post" action = "/<%=@user.username%>/reviews/<%=index+1%>/delete">
+  <form method = "post" action = "/reviews/<%=review.id%>/delete">
     <input type = "submit" value="Delete">
   </form>
   <br>
 <%end%>
-<a href="/logout">Logout</a>
+<a href="/reviews/new">Create a new Review</a><a href="/logout">Logout</a>

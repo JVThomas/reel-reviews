@@ -5,7 +5,7 @@ class UserController < ApplicationController
       erb :"users/signup"
     else
       @user = User.find(session[:id])
-      redirect to "/#{user.slug}"
+      redirect to "/home"
     end
   end
 
@@ -18,7 +18,7 @@ class UserController < ApplicationController
     else
       user.save
       session[:id] = user.id
-      redirect to "/#{user.slug}"
+      redirect to "/home"
     end
   end
 
@@ -26,7 +26,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :"users/login"
     else
-      redirect to "/#{user.slug}"
+      redirect to "/home"
     end
   end
 
@@ -37,7 +37,7 @@ class UserController < ApplicationController
       user = User.find_by(username: params["username"])
       if !!user && user.authenticate(params["password"])
         session[:id] = user.id  
-        redirect to "/#{user.slug}"
+        redirect to "/home"
       else
         erb :"users/login", locals:{error: "Invalid username/password"}
       end
@@ -49,50 +49,18 @@ class UserController < ApplicationController
     redirect to '/'
   end
 
-  get '/:slug' do
+  get '/users/:slug' do
     redirect to "/login" if !logged_in? 
     @user = User.find_by_slug(params[:slug])
+    redirect to "/home" if @user == current_user
+    @reviews = @user.reviews
+    erb :"users/show"
+  end
+
+  get '/home' do
+    redirect to "/login" if !logged_in? 
+    @user = User.find(session[:id])
     @reviews = @user.reviews
     erb :"users/index"
-  end
-
-  get '/:slug/reviews' do
-    redirect to "/login" if !logged_in?
-    @user = User.find_by_slug(params[:slug])
-    @reviews = @user.reviews
-    erb :"reviews/show"
-  end
-
-  get '/:slug/reviews/:id' do
-    redirect to "/login" if !logged_in?
-    @review = User.reviews[params[:id].to_i-1]
-    erb :"/reviews/post"
-  end
-
-  get '/:slug/reviews/:id/edit' do
-    redirect to "/login" if !logged_in?
-    @user = User.find_by_slug(params[:slug])
-    redirect to "/#{user.slug}" if @user.id != session[:id]
-    @review = @user.reviews[params[:id].to_i-1]
-    erb :"reviews/edit"
-  end
-
-  post '/:slug/reviews/:id' do
-    redirect to "/login" if !logged_in?
-    @user = current_user
-    @review = @user.reviews[params[:id].to_i-1]
-    @review.content = params["content"]
-    @review.year = params["year"].to_i
-    @review.score = params["score"].to_i
-    @review.update
-    redirect to "/#{@user.slug}/reviews/#{params[:id]}"
-  end
-
-  post '/:slug/reviews/:id/delete' do
-    redirect to "/login" if !logged_in?
-    @user = User.find_by_slug(params[:slug])
-    @review = User.reviews[params[:id].to_i-1]
-    @review.destroy
-    redirect to '/:slug/reviews/'
   end
 end

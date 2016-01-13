@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160112155658) do
 
   create_table "reviews", force: :cascade do |t|
     t.string  "content"
-    t.integer "score"
+    t.string  "score"
     t.integer "user_id"
     t.integer "movie_id"
   end

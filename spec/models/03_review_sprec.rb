@@ -4,7 +4,7 @@ describe "Review" do
   before do 
     @user = User.create(:username => "Billy Bob", :password => "password")
     @movie = Movie.create(:name => "Grown Ups 2")
-    @review = Review.create(:content => "Grown Ups 2 is a horrible movie", :score => 1, :user_id => @user.id, :movie_id => @movie.id)
+    @review = Review.create(:content => "Grown Ups 2 is a horrible movie", :score => "1", :user_id => @user.id, :movie_id => @movie.id)
     @genre = Genre.create(:name => "Comedy")
 
   end
@@ -18,7 +18,7 @@ describe "Review" do
   end
 
   it "can have a score" do
-    expect(@review.score).to eq(1)
+    expect(@review.score).to eq("1")
   end
 
   it "belongs to a user" do
