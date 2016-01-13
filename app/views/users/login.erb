@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<%if !!locals[:error]%>
+  <p><%=locals[:error]%></p>
+<%elsif !!locals[:empty]%>
+  <p><%=locals[:empty]%></p>
+<%end%>
+
+<form method = "post" action="/login">
+  <label for="username">Username:</label>
+  <input type = "text" name = "username" placeholder ="Username">
+  <br>
+  <label for= "password">Password:</label>
+  <input type = "password" name = "password" placeholder = "Password">
+  <br>
+  <input type = "submit" value = "Submit">
+</form>

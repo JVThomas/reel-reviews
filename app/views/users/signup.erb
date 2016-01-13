@@ -1,0 +1,16 @@
+<h1>Signup</h1>
+<%if !!locals[:empty]%>
+  <p><%=locals[:empty]%></p>
+<%elsif !!locals[:taken]%>
+  <p><%=locals[:taken]%></p>
+<%end%>
+
+<form method = "post" action="/signup">
+  <label for="username">Username:</label>
+  <input type = "text" name = "username" placeholder ="Username">
+  <br>
+  <label for= "password">Password:</label>
+  <input type = "password" name = "password" placeholder = "Password">
+  <br>
+  <input type = "submit" value = "Submit">
+</form>
