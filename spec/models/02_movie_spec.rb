@@ -5,9 +5,7 @@ describe "Movie" do
     @user = User.create(:username => "Billy Bob", :password => "password")
     @movie = Movie.create(:name => "Grown Ups 2")
     @review = Review.create(:content => "Grown Ups 2 is a horrible movie", :user_id => @user.id, :movie_id => @movie.id)
-    @genre = Genre.create(:name => "Comedy")
 
-    @movie.genres << @genre 
   end
 
   it "can be initialized" do
@@ -29,10 +27,6 @@ describe "Movie" do
   it "has many viewers(users) through reviews" do 
     expect(@movie.users.count).to eq(1)
     expect(@movie.users.first.username).to eq("Billy Bob")
-  end
-
-  it "has many genres" do
-    expect(@movie.genres.count).to eq(1)
   end
 
   describe "Class methods" do

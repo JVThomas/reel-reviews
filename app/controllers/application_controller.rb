@@ -10,29 +10,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    redirect to '/home' if logged_in?
     erb :index
-  end
-
-  get "/movies" do
-    @movies = Movie.all
-    erb :"movies/index"
-  end
-
-  get "/movies/:id" do
-    @movie = Movie.find(params[:id])
-    @reviews = Review.all
-    erb :"movies/show"
-  end
-
-  get "/genres" do
-    @genres = Genre.all
-    erb :"genres/index"
-  end
-
-  get "/genre/:slug" do
-    @genre = Genre.find_by_slug(params[:slug])
-    @movies = @genre.movies
-    erb :"genre/show"
   end
 
   helpers do

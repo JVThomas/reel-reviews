@@ -4,7 +4,6 @@ class UserController < ApplicationController
     if !logged_in?
       erb :"users/signup"
     else
-      @user = User.find(session[:id])
       redirect to "/home"
     end
   end
@@ -50,7 +49,7 @@ class UserController < ApplicationController
   end
 
   get '/users' do
-    @users = User.all
+    @users = User.all.order(username: :asc)
     erb :"users/index"
   end
 
@@ -64,8 +63,14 @@ class UserController < ApplicationController
 
   get '/home' do
     redirect to "/login" if !logged_in? 
-    @user = User.find(session[:id])
+    @user = current_user
     @reviews = @user.reviews
     erb :"users/home"
+  end
+
+  helpers do
+    def movie_reviewed(review)
+      Movie.find(review.movie_id)
+    end
   end
 end
