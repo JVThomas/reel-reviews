@@ -1,8 +1,12 @@
 <h1>Signup</h1>
 <%if !!locals[:empty]%>
-  <p><%=locals[:empty]%></p>
+  <div class ="one column content" id="login-error">
+    <p><%=locals[:empty]%></p>
+  </div>
 <%elsif !!locals[:taken]%>
-  <p><%=locals[:taken]%></p>
+  <div class ="one column content" id="login-error">
+    <p><%=locals[:taken]%></p>
+  </div>
 <%end%>
 
 <form method = "post" action="/signup">

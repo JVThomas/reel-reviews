@@ -5,7 +5,7 @@ class ReviewController < ApplicationController
     erb :"reviews/index"
   end
 
-  get 'reviews/movies' do
+  get '/reviews/movies' do
     redirect to '/reviews'
   end
 
@@ -31,28 +31,22 @@ class ReviewController < ApplicationController
     erb :"reviews/show"
   end
 
-  get "/reviews/movies/:slug/:id" do
-    @review = Review.find(params[:id])
-    erb :"/reviews/post"
-  end
-
   get "/reviews/movies/:slug/:id/edit" do
     redirect to "/login" if !logged_in?
     @review = Review.find(params[:id])
+    @movie = Movie.find(@review.movie_id)
     redirect to "/reviews" if @review.user_id != session[:id]
     erb :"reviews/edit"
   end
 
-  post '/reviews/movies/:slug/:id' do
+  post "/reviews/movies/:slug/:id" do
     redirect to "/login" if !logged_in?
-    if params["name"].empty? || params["score"].empty? || params["content"].empty?
+    if params["score"].empty? || params["content"].empty?
       erb :"reviews/new", locals:{empty: "Please fill in all fields"}
     end
     @review = Review.find(params[:id])
     redirect to "/reviews" if @review.user_id != session[:id]
-    @review.content = params["content"]
-    @review.score = params["score"]
-    @review.update
+    @review.update(content: params["content"], score: params["score"])
     redirect to "/reviews/movies/#{params[:slug]}"
   end
 

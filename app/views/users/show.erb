@@ -1,9 +1,10 @@
-<h1>Reviews from <%=@user.username%>!</h1>
-<br>
-<%@reviews.each do |review|%>
-  <h3><%=@review.movie_id.name%></h3>
-  <p><%=review.content%></p>
-  <p><%=@review.score%></p>
-  <br>
-<%end%>
-<a href="/logout">Logout</a>
+<div class ="one column content-wrapper">
+  <h1>Reviews from <%=@user.username%>!</h1>
+  <%@reviews.each do |review|%>
+    <div class ="one column content">
+      <h3><%=movie_reviewed(review).name%></h3>
+      <h4>Score: <%=review.score%></h4>
+      <p><%=review.content%></p>
+    </div>
+  <%end%>
+</div>

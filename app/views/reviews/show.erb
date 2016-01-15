@@ -1,0 +1,17 @@
+<div class ="one column content-wrapper">
+  <h1><%=@movie.name%> Reviews!</h1>
+  <%@reviews.each do |review|%>
+    <div class ="one column content">
+      <h3><%=review_owner(review).username%></h3>
+      <h3>Score:<%=review.score%></h3>
+      <p><%=review.content%></p>
+      <%if review_owner(review).id == @session%>
+        <a href="/reviews/movies/<%=@movie.slug%>/<%=review.id%>/edit" class = "btn">Edit</a>
+        <form action = "/reviews/movies/<%=@movie.slug%>/<%=review.id%>/delete" method="post" id="delete">
+          <input type="submit" value ="Delete">
+        </form>     
+      <%end%>
+      <br>
+    </div>
+  <%end%>
+</div>

@@ -1,0 +1,18 @@
+<%if !!locals[:empty]%>
+  <p><%=locals[:empty]%></p>
+<%end%>
+
+<h1>Create Review</h1>
+
+<form action = "/reviews" method="post">
+  <label for="name">Movie</label>
+  <input type = "text" name = "name" placeholder="Movie">
+  <br>
+  <label for="score">Score</label>
+  <input type = "text" name = "score" placeholder = "score">
+  <br>
+  <label for="content">Review</label>
+  <input type = "text" name = "content" placeholder = "Write your review here!" id="review-content">
+  <br>
+  <input type = "submit" value = "Create">
+</form>

@@ -1,17 +1,17 @@
-<h1>Welcome, <%=@user.username%>! Here are your reviews!</h1>
-<br>
-<%@reviews.each do |review|%>
-  <h2><%=movie_reviewed(review).name%></h2>
-  <h3>Score: <%=review.score%></h3>
-  <p><%=review.content%></p>
-  <form method = "get" action = "/reviews/<%=review.id%>/edit">
-    <input type = "submit" value="Edit Review">
-  </form>
-  <form method = "post" action = "/home/<%=review.id%>">
-    <input type = "submit" value="Delete Review">
-  </form>
-  <br>
-<%end%>
-<a href="/reviews/new">Create a new Review</a>
-<br>  
-<a href="/logout">Logout</a>
+ <div class ="one column content-wrapper">
+  <h1>Welcome, <%=@user.username%>! Here are your reviews!</h1>
+  <p> <a href="/reviews/new">...or create a new one!</a></p>
+  <%@reviews.each do |review|%>
+    <div class ="one column content">
+      <h3><%=movie_reviewed(review).name%></h3>
+      <h4>Score: <%=review.score%></h4>
+      <p><%=review.content%></p>
+      <a href="/reviews/movies/<%=movie_reviewed(review).slug%>/<%=review.id%>/edit" class = "btn">Edit</a>
+      <form action = "/home/<%=review.id%>" method="post" id="delete">
+        <input type="submit" value ="Delete">
+      </form>
+      <br>
+    </div>
+  <%end%>
+</div>
+
