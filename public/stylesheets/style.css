@@ -1,6 +1,11 @@
 /*///////////////////LAYOUT////////////////////////////*/
 html {
   box-sizing: border-box;
+  background: url("/img/stock-theater.jpg") no-repeat center center fixed; ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -8,7 +13,6 @@ html {
 
 body{
   margin:0;
-  background-color: #f5f5f5;
 }
 
 .container {
@@ -35,6 +39,20 @@ body{
 .one-fourth,
 .half {
   width: 100%;
+}
+
+.content-wrapper{
+  margin-top: 10px;
+  background-color: #f5f5f5;
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content{
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 3%;
 }
 
 /*///////////////////STYLING////////////////////////////*/
@@ -74,6 +92,8 @@ body{
 
 #delete{
   display: inline-block;
+  margin:0;
+  width: 0;
 }
 
 input[type="submit"] {
@@ -89,22 +109,36 @@ input[type="submit"] {
   border-radius: 2px;
 }
 
-
-.content-wrapper{
-  margin-top: 10px;
-}
-
-.content{
-  border-bottom: 1px black solid;
-  border-width: thin;
-  padding: 10px; 
-}
-
 #login-error{
+  float:none;
   border:none;
   background-color: rgb(238, 214, 214);
   border-radius: 10px;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  padding: 1% 1%; 
+  text-align: center;
+}
+
+form{
+  margin:0 auto;
+  width:50%;
+  text-align: center;
+}
+
+#review-form{
+  text-align: left;
+  width: 80%
+}
+
+h1{
+  text-align: center;
+}
+
+li{
+  list-style-type: none;  
 }
 
 

@@ -1,20 +1,23 @@
-<h1>Signup</h1>
-<%if !!locals[:empty]%>
-  <div class ="one column content" id="login-error">
-    <p><%=locals[:empty]%></p>
+<div class ="one column content-wrapper">  
+  <h1>Signup</h1>
+  <%if !!locals[:empty]%>
+    <div class ="one column content" id="login-error">
+      <p><%=locals[:empty]%></p>
+    </div>
+  <%elsif !!locals[:taken]%>
+    <div class ="one column content" id="login-error">
+      <p><%=locals[:taken]%></p>
+    </div>
+  <%end%>
+  <div class ="one column content">
+    <form method = "post" action="/signup" id="user-details">
+      <label for="username">Username:</label>
+      <input type = "text" name = "username" placeholder ="Username">
+      <br>
+      <label for= "password">Password:</label>
+      <input type = "password" name = "password" placeholder = "Password">
+      <br>
+      <input type = "submit" value = "Submit">
+    </form>
   </div>
-<%elsif !!locals[:taken]%>
-  <div class ="one column content" id="login-error">
-    <p><%=locals[:taken]%></p>
-  </div>
-<%end%>
-
-<form method = "post" action="/signup">
-  <label for="username">Username:</label>
-  <input type = "text" name = "username" placeholder ="Username">
-  <br>
-  <label for= "password">Password:</label>
-  <input type = "password" name = "password" placeholder = "Password">
-  <br>
-  <input type = "submit" value = "Submit">
-</form>
+</div>

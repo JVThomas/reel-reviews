@@ -41,9 +41,6 @@ class ReviewController < ApplicationController
 
   post "/reviews/movies/:slug/:id" do
     redirect to "/login" if !logged_in?
-    if params["score"].empty? || params["content"].empty?
-      erb :"reviews/new", locals:{empty: "Please fill in all fields"}
-    end
     @review = Review.find(params[:id])
     redirect to "/reviews" if @review.user_id != session[:id]
     @review.update(content: params["content"], score: params["score"])

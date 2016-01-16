@@ -1,6 +1,8 @@
  <div class ="one column content-wrapper">
-  <h1>Welcome, <%=@user.username%>! Here are your reviews!</h1>
-  <p> <a href="/reviews/new">...or create a new one!</a></p>
+  <div class ="one column content">
+    <h1>Welcome, <%=@user.username%>! Here are your reviews!</h1>
+    <p> <a href="/reviews/new">...or create a new one!</a></p>
+  </div>
   <%@reviews.each do |review|%>
     <div class ="one column content">
       <h3><%=movie_reviewed(review).name%></h3>

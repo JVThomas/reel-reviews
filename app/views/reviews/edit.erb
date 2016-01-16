@@ -1,12 +1,16 @@
-<h1>Edit Review</h1>
-<h2><%=@movie.name%></h2>
+<div class ="one column content-wrapper">
+  <h1>Edit Review</h1>
+  
 
-<form action = "/reviews/movies/<%=@movie.slug%>/<%=@review.id%>" method="post">
-  <label for="score">Score</label>
-  <input type = "text" name = "score" value = "<%=@review.score%>">
-  <br>
-  <label for="content">Review</label>
-  <input type = "text" name = "content" value = "<%=@review.content%>" id ="review-content">
-  <br>
-  <input type = "submit" value = "Edit">
-</form>
+  <form action = "/reviews/movies/<%=@movie.slug%>/<%=@review.id%>" method="post" id="review-form">
+     <h2><%=@movie.name%></h2>
+    <label for="score">Score</label>
+    <input type = "text" name = "score" value = "<%=@review.score%>">
+    <br>
+    <label for="content">Review</label>
+    <br>
+    <textarea name="content" cols=80 rows=20></textarea>
+    <br>
+    <input type = "submit" value = "Edit">
+  </form>
+</div>

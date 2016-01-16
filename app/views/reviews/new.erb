@@ -1,18 +1,23 @@
-<%if !!locals[:empty]%>
-  <p><%=locals[:empty]%></p>
-<%end%>
-
-<h1>Create Review</h1>
-
-<form action = "/reviews" method="post">
-  <label for="name">Movie</label>
-  <input type = "text" name = "name" placeholder="Movie">
-  <br>
-  <label for="score">Score</label>
-  <input type = "text" name = "score" placeholder = "score">
-  <br>
-  <label for="content">Review</label>
-  <input type = "text" name = "content" placeholder = "Write your review here!" id="review-content">
-  <br>
-  <input type = "submit" value = "Create">
-</form>
+<div class ="one column content-wrapper">    
+  <h1>Create Review</h1>
+  <%if !!locals[:empty]%>
+    <div class ="one column content" id="login-error">
+      <p><%=locals[:empty]%></p>
+    </div>
+  <%end%>
+  <div class ="one column content">
+    <form action = "/reviews" method="post" id = "review-form">
+      <label for="name">Movie</label>
+      <input type = "text" name = "name" placeholder="Movie">
+      <br>
+      <label for="score">Score</label>
+      <input type = "text" name = "score" placeholder = "score">
+      <br>
+      <label for="content">Review</label>
+      <br>
+      <textarea name="content" cols=80 rows=20></textarea>
+      <br>
+      <input type = "submit" value = "Create">
+    </form>
+  </div>
+</div>

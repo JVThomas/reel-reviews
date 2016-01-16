@@ -1,3 +1,4 @@
+<div class ="one column content-wrapper">  
   <h1>Login</h1>
     <%if !!locals[:error]%>
       <div class ="one column content" id="login-error">
@@ -8,12 +9,15 @@
         <p><%=locals[:empty]%></p>
       </div>
     <%end%>
-    <form method = "post" action="/login">
-      <label for="username">Username:</label>
-      <input type = "text" name = "username" placeholder ="Username">
-      <br>
-      <label for= "password">Password:</label>
-      <input type = "password" name = "password" placeholder = "Password">
-      <br>
-      <input type = "submit" value = "Submit">
-    </form>
+    <div class ="one column content">
+      <form method = "post" action="/login" id = "user-details">
+        <label for="username">Username:</label>
+        <input type = "text" name = "username" placeholder ="Username">
+        <br>
+        <label for= "password">Password:</label>
+        <input type = "password" name = "password" placeholder = "Password">
+        <br>
+        <input type = "submit" value = "Submit">
+      </form>
+    </div>
+</div>

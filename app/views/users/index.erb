@@ -1,5 +1,11 @@
-<h1>Users</h1>
-<%@users.each do |user| %>
-  <a href="/users/<%=user.slug%>"><%=user.username%></a>
-  <br>
-<%end%>
+ <div class ="one column content-wrapper">
+  <div class ="one column content">
+    <h1>Users</h1>
+    <ul>
+      <%@users.each do |user| %>
+        <li><a href="/users/<%=user.slug%>"><%=user.username%></a></li>
+      <%end%>
+    </ul>
+  </div>
+</div>
+

@@ -1,8 +1,10 @@
 <div class ="one column content-wrapper">
-  <h1>Reviews By Movie</h1>
-  <ul>
-    <%@movies.each do |movie|%>
-      <li><a href="reviews/movies/<%=movie.slug%>"><%=movie.name%></a></li>
-    <%end%>
-  </ul>
+  <div class ="one column content">
+    <h1>Reviews By Movie</h1>
+    <ul>
+      <%@movies.each do |movie|%>
+        <li><a href="reviews/movies/<%=movie.slug%>"><%=movie.name%></a></li>
+      <%end%>
+    </ul>
+  </div>
 </div>
