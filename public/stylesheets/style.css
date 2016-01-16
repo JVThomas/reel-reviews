@@ -130,7 +130,9 @@ form{
 
 #review-form{
   text-align: left;
-  width: 80%
+  width: 80%;
+  padding-bottom: 3%;
+  padding-left: 6%;
 }
 
 h1{

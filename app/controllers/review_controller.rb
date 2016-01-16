@@ -47,20 +47,24 @@ class ReviewController < ApplicationController
     redirect to "/reviews/movies/#{params[:slug]}"
   end
 
-  post "/home/:id" do
-    redirect to "/login" if !logged_in?
-    @review = Review.find(params[:id])
-    redirect to "/home" if @review.user_id != session[:id]
-    @review.destroy
-    redirect to '/home'
-  end
-
+  #standard delete on reviews page
+  #redirect to movie review page
   post "/reviews/movies/:slug/:id/delete" do
     redirect to "/login" if !logged_in?
     @review = Review.find(params[:id])
     redirect to "/home" if @review.user_id != session[:id]
     @review.destroy
     redirect to "/reviews/movies/#{params[:slug]}"
+  end
+
+  #Delete method for review from home page
+  #Similar to standard delete, except redirects to home page
+  post "/home/:id" do
+    redirect to "/login" if !logged_in?
+    @review = Review.find(params[:id])
+    redirect to "/home" if @review.user_id != session[:id]
+    @review.destroy
+    redirect to '/home'
   end
 
   helpers do
