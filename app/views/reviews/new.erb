@@ -5,19 +5,17 @@
       <p><%=locals[:empty]%></p>
     </div>
   <%end%>
-  <div class ="one column content">
-    <form action = "/reviews" method="post" id = "review-form">
-      <label for="name">Movie</label>
-      <input type = "text" name = "name" placeholder="Movie">
-      <br>
-      <label for="score">Score</label>
-      <input type = "text" name = "score" placeholder = "score">
-      <br>
-      <label for="content">Review</label>
-      <br>
-      <textarea name="content" cols=80 rows=20></textarea>
-      <br>
-      <input type = "submit" value = "Create">
-    </form>
-  </div>
+  <form action = "/reviews" method="post" id = "review-form">
+    <label for="name">Movie</label>
+    <input type = "text" name = "name" placeholder="Movie">
+    <br>
+    <label for="score">Score</label>
+    <input type = "text" name = "score" placeholder = "score">
+    <br>
+    <label for="content">Review</label>
+    <br>
+    <textarea name="content" cols=80 rows=20></textarea>
+    <br>
+    <input type = "submit" value = "Create">
+  </form>
 </div>

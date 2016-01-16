@@ -4,7 +4,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :"users/signup"
     else
-      redirect to "/home"
+      redirect to '/home'
     end
   end
 
