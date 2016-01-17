@@ -44,11 +44,13 @@ class UserController < ApplicationController
   end
 
   get '/logout' do 
+    redirect to '/' if !logged_in?
     session.clear
     redirect to '/'
   end
 
   get '/users' do
+    redirect to "/login" if !logged_in?
     @users = User.all.order(username: :asc)
     erb :"users/index"
   end

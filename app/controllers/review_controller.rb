@@ -40,11 +40,15 @@ class ReviewController < ApplicationController
   end
 
   post "/reviews/movies/:slug/:id" do
-    redirect to "/login" if !logged_in?
     @review = Review.find(params[:id])
     redirect to "/reviews" if @review.user_id != session[:id]
-    @review.update(content: params["content"], score: params["score"])
-    redirect to "/reviews/movies/#{params[:slug]}"
+    @movie = Movie.find(@review.movie_id)
+    if params[:score].empty? || params[:content].empty?
+      erb :"reviews/edit", locals:{empty: "Please fill in all fields"}
+    else
+      @review.update(content: params["content"], score: params["score"])
+      redirect to "/reviews/movies/#{params[:slug]}"
+    end
   end
 
   #standard delete on reviews page
