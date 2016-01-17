@@ -40,6 +40,7 @@ class ReviewController < ApplicationController
   end
 
   post "/reviews/movies/:slug/:id" do
+    redirect to "/login" if !logged_in?
     @review = Review.find(params[:id])
     redirect to "/reviews" if @review.user_id != session[:id]
     @movie = Movie.find(@review.movie_id)
