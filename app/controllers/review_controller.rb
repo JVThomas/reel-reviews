@@ -15,6 +15,7 @@ class ReviewController < ApplicationController
   end
 
   post '/reviews' do
+    redirect to "/login" if !logged_in?
     if params[:name].empty? || params[:score].empty? || params[:content].empty?
       erb :"reviews/new", locals:{empty: "Please fill in all fields"}
     else
