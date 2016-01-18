@@ -62,7 +62,7 @@ class ReviewController < ApplicationController
     redirect to "/reviews/movies/#{params[:slug]}"
   end
 
-  #Delete method for review from home page
+  #Delete for review from home page
   #Similar to standard delete, except redirects to home page
   post "/home/:id" do
     redirect to "/login" if !logged_in?
