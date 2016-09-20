@@ -1,5 +1,5 @@
 #Reel-Reviews
-Reel-Reviews is a user-review site where members can post, view, and comment on reviews posted on the site.
+Reel-Reviews is a user-review site where members can post and view reviews on the site.
 
 ##Hot to run
   - Clone and download the repo to your local enviornment
